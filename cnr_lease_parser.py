@@ -18,9 +18,9 @@ re_month,re_day = args.date.split(",")
 for line in fl:
 	ip = re.search('^(([0-9]{1,3})\.?)*',line).group()
 	time = re.search('lease-renewal-time="([A-Za-z0-9 :]*)"',line)
-	if time and ip is not None:
+	if time and ip:
 		date = re.search('(Nov|Dec) +([0-9]{1,2})',time.group(1))
-		if date is not None:
+		if date:
 			month = date.group(1)
 			day = int(date.group(2))
 			if month == re_month and day > int(re_day):
